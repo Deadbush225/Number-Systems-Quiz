@@ -6,6 +6,9 @@
 	import { onMount } from "svelte";
 	import type { NumberSystem } from "./number-system/types";
 
+	import { fractionsEnables_store } from "./number-system/store/states";
+	import { get } from "svelte/store";
+
 	let initView: any;
 	// let tabEntries = [Binary];
 	let supportedNumSystem: NumberSystem[] = [
@@ -33,21 +36,32 @@
 	}
 
 	let ActiveTab: NumberSystem;
+
+	// let f: boolean;
+	$: {
+		// f = get(fractionsEnables_store);
+		console.log($fractionsEnables_store);
+	}
 </script>
 
 <main>
-	<div class="tabs-container">
-		{#each supportedNumSystem as system}
-			<div
-				class="tab"
-				class:active={ActiveTab == system}
-				on:click={() => {
-					setView(system);
-				}}
-			>
-				{system}
-			</div>
-		{/each}
+	<div class="sidebar">
+		<div class="tabs-container">
+			{#each supportedNumSystem as system}
+				<div
+					class="tab"
+					class:active={ActiveTab == system}
+					on:click={() => {
+						setView(system);
+					}}
+				>
+					{system}
+				</div>
+			{/each}
+		</div>
+		<div class="fraction-switcher">
+			<input bind:checked={$fractionsEnables_store} type="checkbox" /> Fractions🐦‍🔥
+		</div>
 		<!-- {tabEntries.Binary.title} -->
 	</div>
 	<div id="window"></div>
@@ -60,25 +74,37 @@
 		display: flex;
 		flex-direction: row;
 
-		.tabs-container {
-			padding: 5px;
+		.sidebar {
 			height: 100vh;
-			width: 10em;
-			// width: 50%;
-			background-color: #323232;
 			display: flex;
 			flex-direction: column;
-			gap: 5px;
+			justify-content: space-between;
+			background-color: #323232;
 
-			.tab {
-				height: 2em;
-				line-height: 2em;
-				text-align: center;
-				// background-color: #1f1f1f;
-				border-radius: 5px;
-				&:hover {
-					background-color: #242424;
+			.tabs-container {
+				padding: 5px;
+				width: 10em;
+				// width: 50%;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+
+				.tab {
+					height: 2em;
+					line-height: 2em;
+					text-align: center;
+					// background-color: #1f1f1f;
+					border-radius: 5px;
+					&:hover {
+						background-color: #242424;
+					}
 				}
+			}
+			.fraction-switcher {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 3em;
 			}
 		}
 

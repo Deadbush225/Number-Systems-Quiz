@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { get } from "svelte/store";
 	import ConverterUnit from "./converter/ConverterUnit.svelte";
 	import {
 		toBinary,
@@ -6,27 +7,49 @@
 		toHexadecimal,
 		toOctal,
 	} from "./converter/converter";
+	import { fractionsEnables_store } from "./store/states";
 	import type { NumberSystem } from "./types";
+
 	// import ToOctal from "../converter/toOctal.svelte";
 
 	export let GivenNumberSystem: NumberSystem;
 
-	let number: Number;
+	let number: Number | String;
 	let binary: String;
 	let octal: String;
 	let hex: String;
 	let decimal: String;
 	let answer: String;
+	let fractionEnables: boolean;
 
 	$: number;
 	$: answer;
+	$: {
+		// fractionEnables = get(fractionsEnables_store);
+		// console.log(fractionEnables);
+		$fractionsEnables_store;
+		reset();
+	}
 
 	function reset() {
-		number = Math.floor(Math.random() * 1000);
+		if ($fractionsEnables_store) {
+			number = Number(Math.random() * 64);
+			let tmp = number.toFixed(6);
+			number = parseFloat(tmp);
+
+			// number = Number(Math.random() * 1000).toFixed(6);
+		} else {
+			number = Math.floor(Math.random() * 1000);
+		}
+
+		console.clear();
 		binary = toBinary(number);
-		octal = toOctal(number);
-		hex = toHexadecimal(number);
 		decimal = toDecimal(number);
+		hex = toHexadecimal(number);
+		octal = toOctal(number);
+		// if ($fractionsEnables_store) {
+		// binary = binary;
+		// }
 		// 	solved = null;
 		// 	decimalInput = 0;
 		switch (GivenNumberSystem) {
