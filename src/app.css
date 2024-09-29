@@ -19,7 +19,7 @@ body,
 main {
     width: 100vw !important;
     /* height: 100vh !important; */
-    /* overflow-x: hidden; */
+    overflow-x: clip;
     /* height: max(100vh, 100%) !important; */
     /* height: fit-content !important; */
 }
