@@ -12,14 +12,14 @@
 	let initView: any;
 	// let tabEntries = [Binary];
 	let supportedNumSystem: NumberSystem[] = [
-		"Binary",
 		"Decimal",
+		"Binary",
 		"Octal",
 		"Hexadecimal",
 	];
 
 	onMount(() => {
-		setView("Binary");
+		setView("Decimal");
 	});
 
 	function setView(base: NumberSystem) {
@@ -73,13 +73,22 @@
 		width: 100%;
 		display: flex;
 		flex-direction: row;
+		// margin-left: 10em;
 
 		.sidebar {
+			z-index: 19;
+			position: sticky;
+			top: 0;
+			left: 0;
+			width: 10em;
 			height: 100vh;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 			background-color: #323232;
+			// position: fixed;
+			// top: 0;
+			// left: 0;
 
 			.tabs-container {
 				padding: 5px;
@@ -112,6 +121,7 @@
 			height: 100%;
 			width: 100%;
 			padding: 2em;
+			// padding-left: 12em;
 			// z-index: -100;
 		}
 	}

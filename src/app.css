@@ -19,6 +19,7 @@ body,
 main {
     width: 100vw !important;
     height: 100vh !important;
+    overflow-x: hidden;
     /* height: max(100vh, 100%) !important; */
     /* height: fit-content !important; */
 }
@@ -91,4 +92,11 @@ button:focus-visible {
     button {
         background-color: #f9f9f9;
     }
+}
+
+mjx-container {
+    /* display: block; */
+    /* text-align: center; */
+    /* margin: 1em 0; */
+    margin: 0.7em 0 !important;
 }

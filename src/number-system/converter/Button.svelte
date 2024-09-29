@@ -102,6 +102,7 @@
 	}
 
 	.button {
+		cursor: pointer;
 		display: inline-flex;
 		position: relative;
 		// background-clip: content-box;
