@@ -122,18 +122,33 @@
 
 	{#if GivenNumberSystem != "Decimal"}
 		<ConverterUnit base="Decimal" number={decimal}></ConverterUnit>
+		{#if GivenNumberSystem == "Binary"}
+			<TableGuide radix={2}></TableGuide>
+		{/if}
+		{#if GivenNumberSystem == "Hexadecimal"}
+			<TableGuide radix={16}></TableGuide>
+		{/if}
+		{#if GivenNumberSystem == "Octal"}
+			<TableGuide radix={8}></TableGuide>
+		{/if}
 	{/if}
 	{#if GivenNumberSystem != "Binary"}
 		<ConverterUnit base="Binary" number={binary}></ConverterUnit>
-		<TableGuide radix={2}></TableGuide>
+		{#if GivenNumberSystem == "Decimal"}
+			<TableGuide radix={2}></TableGuide>
+		{/if}
 	{/if}
 	{#if GivenNumberSystem != "Hexadecimal"}
 		<ConverterUnit base="Hexadecimal" number={hex}></ConverterUnit>
-		<TableGuide radix={16}></TableGuide>
+		{#if GivenNumberSystem == "Decimal"}
+			<TableGuide radix={16}></TableGuide>
+		{/if}
 	{/if}
 	{#if GivenNumberSystem != "Octal"}
 		<ConverterUnit base="Octal" number={octal}></ConverterUnit>
-		<TableGuide radix={8}></TableGuide>
+		{#if GivenNumberSystem == "Decimal"}
+			<TableGuide radix={8}></TableGuide>
+		{/if}
 	{/if}
 
 	<button class="regen" on:click={reset}>Regenerate</button>
@@ -154,6 +169,5 @@
 		display: block;
 		margin: 0 auto;
 		margin-top: 1em;
-		margin-bottom: 2em;
 	}
 </style>

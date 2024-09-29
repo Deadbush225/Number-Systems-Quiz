@@ -9,6 +9,23 @@
 	];
 </script>
 
+<svelte:head>
+	<script>
+		MathJax = {
+			tex: {
+				inlineMath: [
+					["$", "$"],
+					["\\(", "\\)"],
+				],
+			},
+		};
+	</script>
+	<script
+		id="MathJax-script"
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+	></script>
+</svelte:head>
+
 <div class="table-container">
 	{#each exponents as sign}
 		<div class="table">
