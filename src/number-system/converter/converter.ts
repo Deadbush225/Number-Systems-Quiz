@@ -74,7 +74,7 @@ export function parseFractionalString(str: String, radix: number) {
 }
 
 // Example usage:
-let str = "101.11";
-let radix = 2;
-let num = parseFractionalString(str, radix);
-console.log(num); // Output: 5.75
+// let str = "101.11";
+// let radix = 2;
+// let num = parseFractionalString(str, radix);
+// console.log(num); // Output: 5.75

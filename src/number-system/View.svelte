@@ -13,7 +13,6 @@
 
 	import { truncateToThreeDecimals } from "./converter/converter";
 	import TableGuide from "./converter/TableGuide.svelte";
-	// import ToOctal from "../converter/toOctal.svelte";
 
 	export let GivenNumberSystem: NumberSystem;
 	let converter: Function;

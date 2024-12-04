@@ -2,15 +2,25 @@
 	import favicon from "/favicon.png";
 	// import viteLogo from "/vite.svg";
 	// import Counter from "./lib/Counter.svelte";
+
 	import View from "./number-system/View.svelte";
+	import OtherView from "./data-rep/OtherView.svelte";
+	import Arithmetic from "./arithmetic/Arithmetic.svelte";
+	import Ieee from "./IEEE/IEEE.svelte";
+	// import View from "./number-system/View.svelte";
+	// import OtherView from "./data-rep/OtherView.svelte";
+	// import Arithmetic from "./arithmetic/Arithmetic.svelte";
+
 	import { onMount } from "svelte";
+
 	import type { NumberSystem } from "./number-system/types";
+	import type { OtherViews } from "./data-rep/types";
 
 	import { fractionsEnables_store } from "./number-system/store/states";
-	import { get } from "svelte/store";
 
 	let initView: any;
-	// let tabEntries = [Binary];
+	let otherViews: OtherViews[] = ["Data-Rep", "Arithmetic", "IEEE"];
+
 	let supportedNumSystem: NumberSystem[] = [
 		"Decimal",
 		"Binary",
@@ -18,44 +28,72 @@
 		"Hexadecimal",
 	];
 
+	let ActiveTab: NumberSystem | OtherViews;
+	let tabs = [...supportedNumSystem, ...otherViews];
+
 	onMount(() => {
-		setView("Decimal");
+		setView("IEEE");
 	});
 
-	function setView(base: NumberSystem) {
+	function setView(base: NumberSystem | OtherViews) {
 		if (initView) {
 			initView.$destroy();
+			console.clear();
 		}
-		initView = new View({
-			target: document.getElementById("window")!,
-			props: {
-				GivenNumberSystem: base,
-			},
-		});
+
+		if (supportedNumSystem.includes(base as NumberSystem)) {
+			initView = new View({
+				target: document.getElementById("window")!,
+				props: {
+					GivenNumberSystem: base as NumberSystem,
+				},
+			});
+		} else {
+			if (base == "Data-Rep") {
+				initView = new OtherView({
+					target: document.getElementById("window")!,
+					props: {
+						Name: base as OtherViews,
+					},
+				});
+			} else if (base == "Arithmetic") {
+				initView = new Arithmetic({
+					target: document.getElementById("window")!,
+					props: {
+						Name: base as OtherViews,
+					},
+				});
+			} else if (base == "IEEE") {
+				initView = new Ieee({
+					target: document.getElementById("window")!,
+					props: {
+						Name: base as OtherViews,
+					},
+				});
+			}
+		}
 		ActiveTab = base;
 	}
-
-	let ActiveTab: NumberSystem;
 
 	// let f: boolean;
 	$: {
 		// f = get(fractionsEnables_store);
-		console.log($fractionsEnables_store);
+		// console.log($fractionsEnables_store);
 	}
 </script>
 
 <main>
 	<div class="sidebar">
 		<div class="tabs-container">
-			{#each supportedNumSystem as system}
+			{#each tabs as tab}
 				<div
 					class="tab"
-					class:active={ActiveTab == system}
+					class:active={ActiveTab == tab}
 					on:click={() => {
-						setView(system);
+						setView(tab);
 					}}
 				>
-					{system}
+					{tab}
 				</div>
 			{/each}
 		</div>
