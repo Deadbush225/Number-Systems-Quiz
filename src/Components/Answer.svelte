@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Button from "../number-system/converter/Button.svelte";
+	import Button from "./Button.svelte";
 
-	export let system;
-	export let answer;
+	export let answer: string;
+	export let placeholder: string;
 
 	let solved: boolean | null;
 	let binaryInput: String = "";
@@ -18,12 +18,7 @@
 <div class="form-answer">
 	<!-- <p class="converter-header">To: {system}</p> -->
 	<!-- {number} -->
-	<input
-		class="input"
-		bind:value={binaryInput}
-		type="text"
-		placeholder={system}
-	/>
+	<input class="input" bind:value={binaryInput} type="text" {placeholder} />
 	<Button {solved}></Button>
 	<!-- {answer} -->
 </div>
@@ -40,9 +35,6 @@
 		&:focus-visible {
 			outline: #3b3b3b 1px solid !important;
 		}
-	}
-	.converter-header {
-		margin-bottom: 0.1em;
 	}
 
 	.form-answer {

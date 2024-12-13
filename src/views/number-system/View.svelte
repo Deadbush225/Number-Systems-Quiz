@@ -1,18 +1,17 @@
 <script lang="ts">
-	import { get } from "svelte/store";
-	import ConverterUnit from "./converter/ConverterUnit.svelte";
+	import ConverterUnit from "../../lib/converter/ConverterUnit.svelte";
 	import {
 		parseFractionalString,
 		toBinary,
 		toDecimal,
 		toHexadecimal,
 		toOctal,
-	} from "./converter/converter";
-	import { fractionsEnables_store } from "./store/states";
-	import type { NumberSystem } from "./types";
+	} from "../../lib/converter/converter";
+	import { fractionsEnables_store } from "../../lib/store/states";
+	import type { NumberSystem } from "../views";
 
-	import { truncateToThreeDecimals } from "./converter/converter";
-	import TableGuide from "./converter/TableGuide.svelte";
+	import { truncateToThreeDecimals } from "../../lib/converter/converter";
+	import TableGuide from "../../lib/converter/TableGuide.svelte";
 
 	export let GivenNumberSystem: NumberSystem;
 	let converter: Function;

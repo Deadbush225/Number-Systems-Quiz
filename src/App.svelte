@@ -3,20 +3,19 @@
 	// import viteLogo from "/vite.svg";
 	// import Counter from "./lib/Counter.svelte";
 
-	import View from "./number-system/View.svelte";
-	import OtherView from "./data-rep/OtherView.svelte";
-	import Arithmetic from "./arithmetic/Arithmetic.svelte";
-	import Ieee from "./IEEE/IEEE.svelte";
+	import View from "./views/number-system/View.svelte";
+	import OtherView from "./views/data-rep/OtherView.svelte";
+	import Arithmetic from "./views/arithmetic/Arithmetic.svelte";
+	import Ieee from "./views/IEEE/IEEE.svelte";
 	// import View from "./number-system/View.svelte";
 	// import OtherView from "./data-rep/OtherView.svelte";
 	// import Arithmetic from "./arithmetic/Arithmetic.svelte";
 
 	import { onMount } from "svelte";
 
-	import type { NumberSystem } from "./number-system/types";
-	import type { OtherViews } from "./data-rep/types";
+	import type { NumberSystem, OtherViews } from "./views/views";
 
-	import { fractionsEnables_store } from "./number-system/store/states";
+	import { fractionsEnables_store } from "./lib/store/states";
 
 	let initView: any;
 	let otherViews: OtherViews[] = ["Data-Rep", "Arithmetic", "IEEE"];

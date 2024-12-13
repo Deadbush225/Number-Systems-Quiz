@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from "./Button.svelte";
-	import { type NumberSystem } from "../types";
+	import { type NumberSystem } from "../../views/views";
 
 	// export let input_type: "number" | "text" = "number";
 	export let number: String;

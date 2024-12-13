@@ -1,12 +1,12 @@
 <script lang="ts">
 	// import type { OtherViews } from "./types";
-	import type { OtherViews } from "../data-rep/types";
-	import FormAnswer from "./AnswerFo.svelte";
+	import type { OtherViews } from "../views";
+	// import FormAnswer from "./AnswerFo.svelte";
 
-	import { parity } from "../number-system/store/states";
-	import Answer from "./AnswerFo.svelte";
+	import { parity } from "../../lib/store/states";
+	import Answer from "../../Components/Answer.svelte";
 
-	import { truncateToSixDecimals } from "../number-system/converter/converter";
+	import { truncateToSixDecimals } from "../../lib/converter/converter";
 
 	export let Name: OtherViews;
 

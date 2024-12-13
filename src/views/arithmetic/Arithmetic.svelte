@@ -1,9 +1,7 @@
 <script lang="ts">
-	import type { OtherViews } from "../data-rep/types";
-	import FormAnswer from "./Answer.svelte";
+	import type { OtherViews } from "../views";
 
-	import { parity } from "../number-system/store/states";
-	import Answer from "./Answer.svelte";
+	import Answer from "../../Components/Answer.svelte";
 
 	export let Name: OtherViews;
 

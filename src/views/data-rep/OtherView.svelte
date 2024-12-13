@@ -1,8 +1,9 @@
 <script lang="ts">
-	import type { OtherViews } from "../data-rep/types";
-	import FormAnswer from "./FormAnswer.svelte";
+	import type { OtherViews } from "../views";
+	import FormAnswer from "../../Components/Answer.svelte";
+	// import FormAnswer from "./FormAnswer.svelte";
 
-	import { parity } from "../number-system/store/states";
+	import { parity } from "../../lib/store/states";
 
 	export let Name: OtherViews;
 
@@ -245,9 +246,11 @@
 				{x}
 			</span>
 			<div style="display:inline-block;">
-				<FormAnswer system="EBCDIC" answer={CharToEBCDIC(x)}></FormAnswer>
+				<FormAnswer placeholder="EBCDIC" answer={CharToEBCDIC(x) || "invalid"}
+				></FormAnswer>
 				<!-- {CharToEBCDIC(x)} -->
-				<FormAnswer system="ASCII" answer={CharToASCII(x)}></FormAnswer>
+				<FormAnswer placeholder="ASCII" answer={CharToASCII(x) || "invalid"}
+				></FormAnswer>
 			</div>
 			<!-- {CharToASCII(x)} -->
 		</div>
