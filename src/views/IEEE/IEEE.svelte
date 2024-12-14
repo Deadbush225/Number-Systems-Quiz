@@ -129,53 +129,10 @@
 			margin-block-end: 0em;
 		}
 	}
-	.per-letter {
-		margin-bottom: 0.5em;
-	}
-	.letter {
-		min-width: 2em;
-		display: inline-block;
-		text-align: center;
-	}
-
-	// .sub {
-	// 	position: relative;
-	// 	&::before {
-	// 		content: "-";
-	// 		position: absolute;
-	// 		left: -1em;
-	// 		bottom: 0em;
-	// 	}
-	// }
 
 	.center_block {
 		display: flex;
 		justify-content: center;
-	}
-
-	.table-container {
-		margin-top: 1.3em;
-		// margin-bottom: 0.5em;
-		// padding: 1em;
-	}
-
-	table {
-		margin: 1.5em auto;
-		text-align: center;
-		border-radius: 15px;
-		overflow: hidden;
-		border: 1px solid #343434;
-		// border: 1px solid gray
-		td {
-			border: 1px solid #343434;
-		}
-
-		.header {
-			background-color: #323232;
-			td {
-				padding: 0.1em 0.5em;
-			}
-		}
 	}
 
 	.regen {

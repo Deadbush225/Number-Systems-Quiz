@@ -59,21 +59,6 @@
 </div>
 
 <style lang="scss">
-	table {
-		width: 100%;
-		table-layout: fixed;
-		tr:first-child {
-			background-color: #323232;
-		}
-
-		tr {
-			td {
-				// width: 3em;
-				text-align: center;
-			}
-		}
-	}
-
 	.table-container {
 		margin: 1.5em;
 		margin-top: 1.3em;

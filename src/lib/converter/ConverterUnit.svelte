@@ -1,8 +1,7 @@
 <script lang="ts">
-	import Button from "./Button.svelte";
+	import Button from "../../Components/Button.svelte";
 	import { type NumberSystem } from "../../views/views";
 
-	// export let input_type: "number" | "text" = "number";
 	export let number: String;
 	export let base: NumberSystem;
 
@@ -15,16 +14,10 @@
 
 	$: {
 		solved = false;
-		// console.log(`${number} == ${decimalInput}`);
 
 		replacedString = decimalInput.replace(/^0+/, "");
-		// console.log(`${number} == ${replacedString}`);
-
 		replacedString = replacedString.replace(/\s/g, "");
-		// console.log(`${number} == ${replacedString}`);
-
 		replacedString = replacedString.toLowerCase();
-		// console.log(`${number} == ${replacedString}`);
 
 		if (number == replacedString) {
 			solved = true;
@@ -41,7 +34,6 @@
 
 <div class="converter-block">
 	<h2 class="converter-header">To {base}:</h2>
-	<!-- {number} -->
 	<input class="input" bind:value={decimalInput} type="text" />
 	<Button {solved}></Button>
 </div>

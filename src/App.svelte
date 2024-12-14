@@ -1,20 +1,12 @@
 <script lang="ts">
-	import favicon from "/favicon.png";
-	// import viteLogo from "/vite.svg";
-	// import Counter from "./lib/Counter.svelte";
-
 	import View from "./views/number-system/View.svelte";
 	import OtherView from "./views/data-rep/OtherView.svelte";
 	import Arithmetic from "./views/arithmetic/Arithmetic.svelte";
 	import Ieee from "./views/IEEE/IEEE.svelte";
-	// import View from "./number-system/View.svelte";
-	// import OtherView from "./data-rep/OtherView.svelte";
-	// import Arithmetic from "./arithmetic/Arithmetic.svelte";
 
 	import { onMount } from "svelte";
 
 	import type { NumberSystem, OtherViews } from "./views/views";
-
 	import { fractionsEnables_store } from "./lib/store/states";
 
 	let initView: any;
@@ -31,7 +23,7 @@
 	let tabs = [...supportedNumSystem, ...otherViews];
 
 	onMount(() => {
-		setView("IEEE");
+		setView("Decimal");
 	});
 
 	function setView(base: NumberSystem | OtherViews) {
@@ -73,12 +65,6 @@
 		}
 		ActiveTab = base;
 	}
-
-	// let f: boolean;
-	$: {
-		// f = get(fractionsEnables_store);
-		// console.log($fractionsEnables_store);
-	}
 </script>
 
 <main>
@@ -86,11 +72,12 @@
 		<div class="tabs-container">
 			{#each tabs as tab}
 				<div
+					role="button"
+					tabindex="0"
+					on:keypress={() => setView(tab)}
+					on:click={() => setView(tab)}
 					class="tab"
 					class:active={ActiveTab == tab}
-					on:click={() => {
-						setView(tab);
-					}}
 				>
 					{tab}
 				</div>
@@ -110,7 +97,6 @@
 		width: 100%;
 		display: flex;
 		flex-direction: row;
-		// margin-left: 10em;
 
 		.sidebar {
 			z-index: 19;
@@ -123,14 +109,10 @@
 			flex-direction: column;
 			justify-content: space-between;
 			background-color: #323232;
-			// position: fixed;
-			// top: 0;
-			// left: 0;
 
 			.tabs-container {
 				padding: 5px;
 				width: 10em;
-				// width: 50%;
 				display: flex;
 				flex-direction: column;
 				gap: 5px;
@@ -139,7 +121,6 @@
 					height: 2em;
 					line-height: 2em;
 					text-align: center;
-					// background-color: #1f1f1f;
 					border-radius: 5px;
 					&:hover {
 						background-color: #242424;
@@ -158,26 +139,9 @@
 			height: 100%;
 			width: 100%;
 			padding: 2em;
-			// padding-left: 12em;
-			// z-index: -100;
 		}
 	}
 
-	.logo {
-		height: 6em;
-		padding: 1.5em;
-		will-change: filter;
-		transition: filter 300ms;
-	}
-	.logo:hover {
-		filter: drop-shadow(0 0 2em #646cffaa);
-	}
-	.logo.svelte:hover {
-		filter: drop-shadow(0 0 2em #ff3e00aa);
-	}
-	.read-the-docs {
-		color: #888;
-	}
 	.active {
 		background-color: #242424;
 	}
